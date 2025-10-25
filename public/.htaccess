@@ -8,8 +8,3 @@ RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
     Order allow,deny
     Deny from all
 </Files>
-
-<Files "*.sql">
-    Order allow,deny
-    Deny from all
-</Files>

@@ -26,7 +26,6 @@ class HomeController {
     ]);
         
         // Página de inicio para usuarios no logueados
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -63,6 +62,5 @@ class HomeController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 }
