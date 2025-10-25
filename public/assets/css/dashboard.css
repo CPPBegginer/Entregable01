@@ -1,0 +1,55 @@
+/* Dashboards específicos */
+.dashboard-header {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.action-card {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    border-left: 4px solid #007bff;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Específico para grifo */
+.fuel-price {
+    font-size: 1.2rem;
+    color: #28a745;
+    font-weight: bold;
+}
+
+.sale-item {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-left: 4px solid #28a745;
+}
+
+.inventory-low {
+    border-left-color: #dc3545;
+    background: #f8d7da;
+}
+
+.inventory-warning {
+    border-left-color: #ffc107;
+    background: #fff3cd;
+}
