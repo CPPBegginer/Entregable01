@@ -1,10 +1,9 @@
 <?php
 namespace App\Controllers;
 
+use App\Models\User;
 use Core\Auth;
 use Core\Session;
-use Core\Validator;
-use App\Models\User;
 
 class AuthController {
     protected $auth;
@@ -14,6 +13,7 @@ class AuthController {
     public function __construct() {
         $this->auth = new Auth();
         $this->session = new Session();
+        $this->userModel = new User();
     }
     
     public function showLogin() {
@@ -25,7 +25,6 @@ class AuthController {
         }
         
         // Usar el layout con CSS separado
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         <div class="auth-container">
@@ -56,7 +55,6 @@ class AuthController {
         </div>
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
     
     public function login() {
@@ -88,7 +86,6 @@ class AuthController {
             $this->redirectToDashboard();
         }
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         <div class="auth-container">
@@ -135,7 +132,6 @@ class AuthController {
         </div>
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
     
     public function register() {
@@ -150,7 +146,7 @@ class AuthController {
         $errors = $this->validateRegistration($data);
 
         if (!empty($errors)) {
-            $this->session->setFlash('error', 'Por favor corrige los errores');
+            $this->session->setFlash('error', implode('<br>', $errors));
             $this->session->setFlash('old', $data);
             redirect('/register');
         }

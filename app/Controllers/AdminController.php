@@ -61,7 +61,6 @@ class AdminController {
         // Suministros recientes
         $recentSupplies = $this->supplyModel->getRecentSupplies(5);
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -243,7 +242,6 @@ class AdminController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
         
     }
 
@@ -254,7 +252,6 @@ class AdminController {
         
         $users = $this->userModel->all();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -316,7 +313,6 @@ class AdminController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     // Gestión de inventario
@@ -326,7 +322,6 @@ class AdminController {
         
         $inventory = $this->inventoryModel->getFullInventory();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -442,7 +437,6 @@ class AdminController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     public function updatePrice() {
@@ -477,7 +471,6 @@ class AdminController {
         $date = $_GET['date'] ?? date('Y-m-d');
         $sales = $this->saleModel->getSalesByDate($date);
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -592,7 +585,6 @@ class AdminController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     // Métodos simplificados para las otras secciones (por tiempo)
@@ -602,7 +594,6 @@ class AdminController {
         
         $customers = $this->customerModel->all();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -665,7 +656,6 @@ class AdminController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     public function suppliers() {
@@ -674,7 +664,6 @@ class AdminController {
         
         $suppliers = $this->supplierModel->getActiveSuppliers();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -712,7 +701,6 @@ class AdminController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     public function supplies() {
@@ -721,7 +709,6 @@ class AdminController {
         
         $supplies = $this->supplyModel->getRecentSupplies(20);
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -763,6 +750,5 @@ class AdminController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 }

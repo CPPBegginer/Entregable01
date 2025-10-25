@@ -36,7 +36,6 @@ class AttendantController {
         $salesStats = $this->saleModel->getTotalSalesToday();
         $inventory = $this->inventoryModel->getFullInventory();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -146,7 +145,6 @@ class AttendantController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
     
     public function newSale() {
@@ -156,7 +154,6 @@ class AttendantController {
         $fuelTypes = $this->fuelTypeModel->getAllFuelTypesWithInventory();
         $customers = $this->customerModel->getRegularCustomers();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -307,7 +304,6 @@ class AttendantController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
     
     public function processSale() {
@@ -366,7 +362,6 @@ class AttendantController {
         $sales = $this->saleModel->getSalesByDate($date);
         $salesStats = $this->saleModel->getTotalSalesToday();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -471,7 +466,6 @@ class AttendantController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     // Métodos para clientes (simplificados por ahora)
@@ -481,7 +475,6 @@ class AttendantController {
         
         $customers = $this->customerModel->all();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -553,14 +546,12 @@ class AttendantController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     public function createCustomer() {
         $middleware = new Middleware();
         $middleware->attendant();
         
-        ob_start();
         include __DIR__ . '/../Views/layouts/header.php';
         ?>
         
@@ -629,7 +620,6 @@ class AttendantController {
 
         <?php
         include __DIR__ . '/../Views/layouts/footer.php';
-        return ob_get_clean();
     }
 
     public function storeCustomer() {
@@ -652,7 +642,6 @@ class AttendantController {
         }
 
         try {
-            $customerId = $this->customerModel->createCustomer($data);
             $this->session->setFlash('success', '✅ Cliente registrado exitosamente!');
             redirect('/attendant/customers');
         } catch (Exception $e) {
